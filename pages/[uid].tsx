@@ -40,7 +40,7 @@ const UserQRDetail: NextPage = () => {
           <>
             <img 
               src={`/qr/api/${uid}`}
-              style={{ width: "100%", height: "100%", maxWidth: "300px", maxHeight: "300px", imageRendering: "pixelated" }}
+              style={{ width: "100%", height: "100%", maxWidth: "300px", maxHeight: "300px", imageRendering: "crisp-edges" }}
               alt=""
             />
             <h2>{app?.firstName} {app?.lastName}</h2>
