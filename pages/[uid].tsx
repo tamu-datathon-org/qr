@@ -49,13 +49,19 @@ const UserQRDetail: NextPage = () => {
         )}
         {app?.status !== "C" && app?.firstName && (
           <>
-            <p>It looks like this account is not addmitted to TAMU Datathon 2021. Did you login with the right account? Also, make sure you RSVP&apos;d in the <a href="/apply">application portal</a>.</p>
+            {(app?.status === "A" || app?.status === "V") && (
+              <p>It looks like this account is addmitted to TAMU Datathon 2021, but you did not RSVP yet. You can RSVP&apos;d in the <a href="/apply">application portal</a>.</p>
+            )}
+            {(app?.status === "X" || app?.status === "R" || app?.status === "P" || app?.status === "E") && (
+              <p>It looks like this account is not addmitted to attend TAMU Datathon 2021 in-person. Did you login with the right account?</p>
+            )}
             <p><a href="/auth/login?r=/qr">Login with a different account</a></p>
           </>
         )}
         {app && !app?.status && !app?.firstName && !app?.lastName && (
           <>
-            <p className="text-red">We couldn&apos;t find your application to TAMU Datathon 2021. Please check with an organizer for assistance.</p>
+            <p className="">We couldn&apos;t find your application to TAMU Datathon 2021. Did you login with the right account? Please check with an organizer for assistance.</p>
+            <p><a href="/auth/login?r=/qr">Login with a different account</a></p>
           </>
         )}
         {error && (
